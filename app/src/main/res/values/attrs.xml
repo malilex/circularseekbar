@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularSeekBar">
+        <attr name="primaryColor" format="color"/>
+        <attr name="secondaryColor" format="color"/>
+        <attr name="staticColor" format="color"/>
+        <attr name="progress" format="integer"/>
+        <attr name="secondaryProgress" format="integer"/>
+        <attr name="maxValue" format="integer"/>
+        <attr name="minValue" format="integer"/>
+        <attr name="startAngle" format="integer"/>
+        <attr name="endAngle" format="integer"/>
+        <attr name="sweepAngle" format="integer"/>
+        <attr name="thumb" format="reference"/>
+        <attr name="detectTouchInside" format="boolean"/>
+        <attr name="textProgressEnabled" format="boolean"/>
+        <attr name="rotateAngle" format="float"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textFormat" format="enum">
+            <enum name="time" value="0"/>
+            <enum name="plain" value="1"/>
+        </attr>
+        <attr name="seekDirection" format="enum">
+            <enum name="clockwise" value="0"/>
+            <enum name="counterclockwise" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
