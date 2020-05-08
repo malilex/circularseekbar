@@ -25,7 +25,7 @@ To start using this component you need to:
 ```
 * Add `SeekListener` if you want to
 ```
-    roundSeekBar.setSeekListener(object : CircularSeekBar.SeekListener{
+    seekBar.setSeekListener(object : CircularSeekBar.SeekListener{
             override fun onProgressChanged(seekBar: CircularSeekBar, progress: Long, byUser: Boolean) {
                 Log.e(TAG, "Progress was changed to $progress. Did user change it? - $byUser")
             }
@@ -41,22 +41,77 @@ To start using this component you need to:
 ```
 * You can also set properties programmatically
 ```
-        roundSeekBar.setPrimaryColor(R.color.colorPrimary)
-        roundSeekBar.setSecondaryColor(android.R.color.holo_red_light)
-        roundSeekBar.maxProgress = 100
-        roundSeekBar.minProgress = 0
-        roundSeekBar.progress = 50
-        roundSeekBar.secondaryProgress = 70
-        roundSeekBar.startAngle = 180f
-        roundSeekBar.endAngle = 360f
-        roundSeekBar.seekDirection = CircularSeekBar.Direction.COUNTERCLOCKWISE
-        roundSeekBar.setThumb(R.mipmap.ic_launcher_round)
+    seekBar.setPrimaryColor(R.color.colorPrimary)
+    seekBar.setSecondaryColor(android.R.color.holo_red_light)
+    seekBar.maxProgress = 100
+    seekBar.minProgress = 0
+    seekBar.progress = 50
+    seekBar.secondaryProgress = 70
+    seekBar.startAngle = 180f
+    seekBar.endAngle = 360f
+    seekBar.seekDirection = CircularSeekBar.Direction.COUNTERCLOCKWISE
+    seekBar.setThumb(R.mipmap.ic_launcher_round)
 ```
 ## Example
-![Example GIF](https://drive.google.com/u/0/uc?id=16U1IQchxXvvzMEQ89dkgg0C6ZA3GqFFf&export=download)
+![Example GIF](https://raw.githubusercontent.com/alexmalishev270896/circularseekbar/master/image/seekbar.gif)
+* `activity_main.xml`
 ```
- 
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.alex_malishev.circular_seekbar.CircularSeekBar
+        android:id="@+id/roundSeekBar"
+        style="@style/SeekBarStyle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:detectTouchInside="true"
+        app:endAngle="350"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rotateAngle="90"
+        app:startAngle="10" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 ````
+* `MainActivity.kt`
+```
+class MainActivity : AppCompatActivity() {
+
+    companion object{
+        const val TAG = "MainActivity"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        roundSeekBar.setSeekListener(object : CircularSeekBar.SeekListener{
+            override fun onProgressChanged(seekBar: CircularSeekBar, progress: Long, byUser: Boolean) {
+                Log.e(TAG, "Progress was changed to $progress. Did user change it? - $byUser")
+            }
+
+            override fun onStartTrackingTouch(seekBar: CircularSeekBar) {
+                seekBar.setPrimaryColor(R.color.colorPrimary)
+                seekBar.setTextColor(R.color.colorPrimary)
+                Log.e(TAG, "User is starting to change current value")
+            }
+
+            override fun onStopTrackingTouch(seekBar: CircularSeekBar) {
+                Log.e(TAG, "User stopped to change current value")
+                seekBar.setPrimaryColor(R.color.colorAccent)
+                seekBar.setTextColor(android.R.color.darker_gray)
+            }
+        })
+    }
+}
+```
 
 ## Contact
 Feel free to contact me via
