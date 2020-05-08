@@ -53,7 +53,7 @@ To start using this component you need to:
         roundSeekBar.setThumb(R.mipmap.ic_launcher_round)
 ```
 ## Example
-![](https://drive.google.com/u/0/uc?id=16U1IQchxXvvzMEQ89dkgg0C6ZA3GqFFf&export=download)
+![Example GIF](https://drive.google.com/u/0/uc?id=16U1IQchxXvvzMEQ89dkgg0C6ZA3GqFFf&export=download)
 ```
  
 ````
